@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --color-primary: #FFFFFF;
+    --color-black: black;
+
+    --multiplier: 1.25;
+
+    --font-sizer: 1rem * var(--multiplier);
+    --normal-font-size: 1rem;
+
+    --spacer: 1rem;
+    --gap-0: calc(var(--spacer) * 0);
+    --gap-1: calc(var(--spacer) * 1);
+    --gap-2: calc(var(--spacer) * 1.875)
+
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--normal-font-size);
+    color: var(--color-primary);
+    margin: 0;
+    padding: 0;
+}
+

@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.44rem;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-left: var(--gap-2);
+
+        }
+
+        li:first-child {
+            margin-left: var(--gap-0);
+        }
+    }
+}

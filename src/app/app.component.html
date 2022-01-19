@@ -1,1 +1,18 @@
-<h1>Hello</h1>
+<main class="main">
+  <div *ngIf='show; else Button' class='test-msg' (click)='closeMsg()'>{{showMsg}}</div> <!--технический баннер, закрывается при клике, показывается если show='true'-->
+  <app-header></app-header>
+  <div class="input-container">
+    <label for='input'>Whrite here text for upper banner</label>
+    <input type='text' #Input (input)='inputHandler($event)' id='input' [value]="inputDefaultValue"><!--здесь покащываются различные вариант байдинга-->
+    <button (click)="getInputValue(Input.value)">ok</button><!--текст меняется при клике на кнопку ok-->
+    <input [(ngModel)]='showMsg'><!--ngModel для двухстороннего байдинга-->
+    <app-text [text]="title"></app-text>
+  </div>
+</main>
+
+<ng-template #Button><!--кнопка для демонстрации баннера, показывается если show='false'-->
+  <app-button [ngStyle]="
+  {position: 'absolute'}
+  "
+  (click)='show=true'></app-button>
+</ng-template>

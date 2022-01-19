@@ -1,0 +1,37 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    background-image: url('../assets/bg.png');
+    background-position: center;
+    width: auto;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+.test-msg {
+    background-color: rgb(23, 23, 133);
+    width: 100%;
+    text-align: center;
+    position: fixed;
+}
+
+.input-container {
+    display: flex;
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    flex-direction: column;
+    padding: 0 0 0 2rem;
+    overflow: hidden;
+}
+
+label {
+    font-size: var(--normal-font-size);
+    color: var(--color-black);
+    height: 20px;
+}
+
