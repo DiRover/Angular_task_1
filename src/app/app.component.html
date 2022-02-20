@@ -1,18 +1,34 @@
 <main class="main">
-  <div *ngIf='show; else Button' class='test-msg' (click)='closeMsg()'>{{showMsg}}</div> <!--технический баннер, закрывается при клике, показывается если show='true'-->
+  <div *ngIf='show; else Button' class='test-msg' (click)='closeMsg()'>{{showMsg}}</div>
+  <!--технический баннер, закрывается при клике, показывается если show='true'-->
   <app-header></app-header>
   <div class="input-container">
     <label for='input'>Whrite here text for upper banner</label>
-    <input type='text' #Input (input)='inputHandler($event)' id='input' [value]="inputDefaultValue"><!--здесь покащываются различные вариант байдинга-->
-    <button (click)="getInputValue(Input.value)">ok</button><!--текст меняется при клике на кнопку ok-->
-    <input [(ngModel)]='showMsg'><!--ngModel для двухстороннего байдинга-->
+    <input type='text' #Input (input)='inputHandler($event)' id='input' [value]="inputDefaultValue">
+    <!--здесь покащываются различные вариант байдинга-->
+    <button (click)="getInputValue(Input.value)">ok</button>
+    <!--текст меняется при клике на кнопку ok-->
+    <input [(ngModel)]='showMsg'>
+    <!--ngModel для двухстороннего байдинга-->
+    <p>{{inputDefaultValue}}</p>
     <app-text [text]="title"></app-text>
   </div>
+  <div [ngStyle]="
+  {width: '100%'}">
+    <app-create-post (onAddPost)="newPost($event)"></app-create-post>
+  </div>
+  <app-post-view [posts]="posts">
+
+    <small *ngIf="posts.length > 2">Длинный</small>
+  </app-post-view>
+  <!-- пример работы с кастомными декораторорами -->
+  <p appTestDirectiv="red" [dStyle]="{border: '2px dotted yellow'}" *appIfNot="isVisible">fsdfdsfsd</p>
 </main>
 
-<ng-template #Button><!--кнопка для демонстрации баннера, показывается если show='false'-->
+
+<ng-template #Button>
+  <!--кнопка для демонстрации баннера, показывается если show='false'-->
   <app-button [ngStyle]="
   {position: 'absolute'}
-  "
-  (click)='show=true'></app-button>
+  " (click)='show=true'></app-button>
 </ng-template>

@@ -1,0 +1,17 @@
+<div class="create-post" #testPost>
+  <form id="form" name="form" class="form" #myForm (onsubmit)="test($event)">
+    <label for="post-title" >Whrite post title</label>
+    <input type="text" id="post-title" name="post-title" [value]="title" #inputTitlePost>
+    <label for="text">Whrite post</label>
+    <input type="text" id="text" name="text" [value]="text" #inputTextPost>
+  </form>
+  <button type="submit" for="form" (click)="submitForm(myForm)">Send</button>
+  <br />
+  <form id="formNgModel" name="formNgModel" class="form" #myFormNgModel>
+    <label for="post-title-ngModel">Whrite post title</label>
+    <input type="text" id="post-title-ngModel" name="post-title-ngModel" [(ngModel)]="tittleNgModel">
+    <label for="text">Whrite post</label>
+    <input type="text" id="text-ngModel" name="text-ngModel" [(ngModel)]="textNgModel">
+  </form>
+  <button type="submit" for="formNgModel" (click)="submitFormNgModel(myFormNgModel)">Send</button>
+</div>

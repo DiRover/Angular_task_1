@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 
+export interface Post {
+  title: string,
+  text: string
+};
+
+export type posts = Array<Post>;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,12 +20,21 @@ export class AppComponent {
 
   show = false;
 
-  inputDefaultValue = '';
+  isVisible = true;
+
+  inputDefaultValue = 'test';
+
+  posts: posts = [];
 
   ngOnInit() {
       setTimeout(() => {
         this.show = true;
       }, 3000)
+  }
+
+  newPost(post: Post) {
+    this.posts.unshift(post);
+    console.log(this.posts)
   }
 
   closeMsg() {
@@ -27,10 +43,12 @@ export class AppComponent {
 
   inputHandler(event: any) {
     const value = event.target.value;
+    this.inputDefaultValue = value;
     
   }
 
   getInputValue(value: string) {
     this.showMsg = value;
+    this.inputDefaultValue = '';
   }
 }
