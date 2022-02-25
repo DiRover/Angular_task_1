@@ -13,6 +13,11 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { TestDirectivDirective } from './directives/test-directiv.directive';
 import { IfNotDirective } from './directives/if-not.directive';
+import { PipeExamplePipe } from './pipes/pipe-example.pipe';
+import { ServiceTestComponentComponent } from './service-test-component/service-test-component.component';
+import { TestServiceService } from './services/test-service.service';
+import { InnerTestServiceService } from './services/inner-test-service.service';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +30,17 @@ import { IfNotDirective } from './directives/if-not.directive';
     CreatePostComponent,
     PostViewComponent,
     TestDirectivDirective,
-    IfNotDirective
+    IfNotDirective,
+    PipeExamplePipe,
+    ServiceTestComponentComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [TestServiceService, InnerTestServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

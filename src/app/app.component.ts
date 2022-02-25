@@ -22,6 +22,10 @@ export class AppComponent {
 
   isVisible = true;
 
+  pipeTest = 'Pipe Test';
+
+  pipeDateTest = new Date();
+
   inputDefaultValue = 'test';
 
   posts: posts = [];

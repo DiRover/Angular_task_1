@@ -23,6 +23,14 @@
   </app-post-view>
   <!-- пример работы с кастомными декораторорами -->
   <p appTestDirectiv="red" [dStyle]="{border: '2px dotted yellow'}" *appIfNot="isVisible">fsdfdsfsd</p>
+  <p>{{2 | pipeExample:5}}</p>
+  <p>{{pipeDateTest | date:'MMMM dd, yyy, HH:mm'}}</p>
+  <p>{{pipeTest | uppercase | lowercase}}</p>
+  <p>{{pipeTest | slice:1-4}}</p>
+
+  <app-service-test-component></app-service-test-component>
+
+ 
 </main>
 
 
