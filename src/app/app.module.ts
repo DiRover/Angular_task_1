@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { ServiceTestComponentComponent } from './service-test-component/service-
 import { TestServiceService } from './services/test-service.service';
 import { InnerTestServiceService } from './services/inner-test-service.service';
 import { FormComponent } from './form/form.component';
+import { SwitchComponent } from './switch/switch.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { FormComponent } from './form/form.component';
     IfNotDirective,
     PipeExamplePipe,
     ServiceTestComponentComponent,
-    FormComponent
+    FormComponent,
+    SwitchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [TestServiceService, InnerTestServiceService],
   bootstrap: [AppComponent]

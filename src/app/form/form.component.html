@@ -1,1 +1,58 @@
-<p>form works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Enter email</label>
+  <input name="email" formControlName='email' #model />
+  <!-- вывожу информацию о том какие ошибки могут быть -->
+  <pre>{{form.get('email')?.errors | json}}</pre>
+  <!-- блок с ошибками показываю в том случае если до поля уже каснулись и оно осталось невалидно -->
+  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+    <!-- разные типы ошибок из-за которых поле невалидно  ['required'] - это тип валидатора -->
+    <small *ngIf="form.get('email')?.errors?.['required']">Field should not be empty</small>
+    <small *ngIf="form.get('email')?.errors?.['email']">Email is incorrect</small>
+    <small *ngIf="form.get('email')?.errors?.['restrictedEmail']">Email {{form.get('email')?.value}} is restricted</small>
+    <small *ngIf="form.get('email')?.errors?.['unicEmail']">Email {{form.get('email')?.value}} is restricted</small>
+  </div>
+  <label>Enter name</label>
+  <input name="yourName" formControlName='yourName' />
+  <pre>{{form.get('yourName')?.errors | json}}</pre>
+  <div *ngIf="form.get('yourName')?.invalid && form.get('yourName')?.touched">
+    <small *ngIf="form.get('yourName')?.errors?.['required']">Field should not be empty</small>
+    <small *ngIf="form.get('yourName')?.errors?.['minlength'] || form.get('yourName')?.errors?.['maxlength']">Name is
+      incorrect</small>
+    <br />
+    <!-- вывожу более подробную информацию об ошибке -->
+    <small *ngIf="form.get('yourName')?.errors?.['minlength']">Length of
+      name should be min 2 symbols, actual length is
+      {{form.get('yourName')?.errors?.['minlength']?.['actualLength']}}</small>
+  </div>
+  <div>
+    <small *ngIf="form.get('yourName')?.errors?.['maxlength']">Length of
+      name should be max 30 symbols, actual length is
+      {{form.get('yourName')?.errors?.['maxlength']?.['actualLength']}}</small>
+  </div>
+  <div class="adress" formGroupName="address">
+    <h3>Address</h3>
+    <select formControlName="country">
+      <option value="ru">Russia</option>
+      <option value="ua">Ukrain</option>
+      <option value="by">Belorussia</option>
+    </select>
+    <input name="capital" formControlName="city">
+    <button type="button" (click)="setCapital()">Choose capital</button>
+  </div>
+  <div class="skills" formGroupName="skills">
+    <h3>Your skills</h3>
+    <input name="skill">
+    <button type="button" (click)="addSkill()">Add skill</button>
+    <div *ngFor="let control of getFormControls()['controls']; let idx = index">
+      <div>
+        <label>Skill {{idx + 1}}</label>
+        <!-- привязываем idx к свойству formControlName, квадратные скобки нужны в том числе для того,
+          что idx является числом, если бы бало строкой, то можно без них (но я не проверил) -->
+        <input [formControlName]="idx" />
+      </div>
+    </div>
+  </div>
+  <!-- form.pending - ждет, когда например пройдет валидация на сервере -->
+  <!-- pending можно указать и для определенного поля например form.get('email')?.pending -->
+  <button type="submit" [disabled]="form.invalid || form.pending">Send</button>
+</form>
