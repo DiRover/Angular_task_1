@@ -14,6 +14,8 @@ export type posts = Array<Post>;
 })
 export class AppComponent {
 
+  appStateAAA = 'on';
+
   title = 'my-app';
 
   showMsg = 'This test project. Click here to close this banner'

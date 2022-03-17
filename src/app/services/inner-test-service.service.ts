@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TestServiceService } from './test-service.service';
 
+
+//внутренний сервис для дргуих сервисов
+//используется глобально
 @Injectable(
   {
     providedIn: 'root'

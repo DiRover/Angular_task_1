@@ -5,7 +5,8 @@ import { InnerTestServiceService } from './inner-test-service.service';
 export class TestServiceLocalService {
 
   counter = 0;
-
+//вставляем внутренний сервис
+//тут можно указать тип поля private, т.к. не отправляем в шаблон
   constructor(private innerTestLocal: InnerTestServiceService) { }
 
   increase() {
